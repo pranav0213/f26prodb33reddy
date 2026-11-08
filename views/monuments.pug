@@ -1,0 +1,23 @@
+
+extends layout
+
+block content
+  h1= title
+
+  - const results = [{ name: "Statue of Liberty", country: "USA", height: 93 }, { name: "Eiffel Tower", country: "France", height: 330 }, { name: "Taj Mahal", country: "India", height: 73 }]
+
+  div.container-fluid
+    div.row
+      each item, index in results
+        div.col-sm-2.border.p-3.m-2(
+          onclick=`buy(${index})`,
+          style="cursor: pointer;"
+        )
+          h4 #{item.name}
+          p Country: #{item.country}
+          p Height: #{item.height} meters
+
+  script.
+    function buy(index) {
+      alert("You purchased item " + index);
+    }

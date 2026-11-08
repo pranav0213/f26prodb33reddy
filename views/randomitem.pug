@@ -1,0 +1,17 @@
+
+extends layout
+
+block content
+  h1= title
+  p Three randomly selected monuments
+
+  - const image_names = ["liberty.png", "eiffel.png", "tajmahal.png", "colosseum.png", "pyramid.png"]
+
+  div.container-fluid
+    div.row
+      - for (let i = 0; i < 3; i++) {
+        - const randomIndex = Math.floor(Math.random() * 5)
+        - const imageName = image_names[randomIndex]
+        div.col-md-4.mb-3
+          img.img-fluid(src=`/images/${imageName}`, alt=`Monument ${imageName}`, width="300", height="300")
+      - }

@@ -1,0 +1,24 @@
+
+extends layout
+
+block content
+  h1= title
+  p Rows: #{query.rows}, Columns: #{query.cols}
+
+  - let rows = Number(query.rows)
+  - let cols = Number(query.cols)
+
+  if !Number.isInteger(rows) || !Number.isInteger(cols)
+    p.text-danger Error: Rows and columns must be integers.
+  else if rows < 2 || rows > 12
+    p.text-danger Error: Rows must be between 2 and 12.
+  else if cols < 2 || cols > 12
+    p.text-danger Error: Columns must be between 2 and 12.
+  else
+    table#outer.table.table-bordered
+      - for (let i = 0; i < rows; i++) {
+        tr#middle
+          - for (let j = 0; j < cols; j++) {
+            td= j - i
+          - }
+      - }
