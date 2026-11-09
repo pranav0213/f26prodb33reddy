@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 Create New Product
+
+  form(action="/resource/products/create" method="POST")
+    p
+      label(for="name") Product Name
+      input(type="text" name="name" id="name" required)
+    p
+      label(for="category") Category
+      input(type="text" name="category" id="category" required)
+    p
+      label(for="price") Price
+      input(type="number" name="price" id="price" min="0" required)
+    button(type="submit") Create Product
